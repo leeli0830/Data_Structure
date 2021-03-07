@@ -1,17 +1,62 @@
+// First Linked List Practice
+// Source code is from
+// https://www.includehelp.com/code-snippets/linked-list-implementation-using-cpp-program.aspx
+// Implementation is not correct
+
 #include <iostream>
 
 using namespace std;
 
-template <typename T>
 struct Node
 {
-    T value;
-    struct Node<T> *next = nullptr;
+    int num;
+    Node *next;
 };
 
-template <typename T>
-class SingleLinked_List
+Node *head = NULL;
+
+void insertNode(int n)
 {
-private:
-    Node<T> *head;
+    Node *newNode = new Node;
+    newNode->num = n;
+    newNode->next = head;
+    head = newNode;
+}
+
+void display()
+{
+    if (head == NULL)
+    {
+        cout << "List is empty!" << endl;
+        return;
+    }
+
+    Node *temp = head;
+
+    while (temp != NULL)
+    {
+        cout << temp->num << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+void deleteItem()
+{
+    if (head == NULL)
+    {
+        cout << "List is empty!" << endl;
+        return;
+    }
+    cout << head->num << " is removed." << endl;
+    head = head->next;
+}
+
+int main()
+{
+    display();
+    insertNode(10);
+    insertNode(20);
+    insertNode(30);
+    display();
 }
