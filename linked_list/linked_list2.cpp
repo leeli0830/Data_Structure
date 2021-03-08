@@ -44,6 +44,7 @@ void deleteItem()
     }
 
     Node *secondLast = head;
+
     while ((secondLast->next)->next != NULL)
     {
         secondLast = secondLast->next;
@@ -52,6 +53,36 @@ void deleteItem()
     current = secondLast;
 
     delete secondLast;
+}
+
+void deleteItem(int n)
+{
+    if (head == NULL)
+    {
+        cout << "List is already empty!" << endl;
+    }
+
+    Node *target = head;
+
+    if (target == head && target->data == n)
+    {
+        head = head->next;
+        delete target;
+    }
+
+    target = head->next;
+    Node *secondLast = head;
+
+    while (target != NULL)
+    {
+        if (target->data == n)
+        {
+            secondLast->next = target->next;
+            delete target;
+        }
+        target = target->next;
+        secondLast = secondLast->next;
+    }
 }
 
 void display()
@@ -76,7 +107,10 @@ int main()
     display();
     insertNode(10);
     insertNode(20);
+    insertNode(30);
     display();
-    deleteItem();
+    deleteItem(20);
+    display();
+    deleteItem(30);
     display();
 }
