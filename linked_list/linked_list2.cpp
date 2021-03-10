@@ -9,7 +9,6 @@ struct Node
 };
 
 Node *head = NULL;
-// Node *tail = NULL;
 Node *current = NULL;
 
 void insertNode(int n)
